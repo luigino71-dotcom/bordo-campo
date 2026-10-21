@@ -9,7 +9,10 @@ function reportText(data){
     if(e.kind==='sostituzione')lines.push(`Esce n° ${e.out||'-'} / Entra n° ${e.in||'-'}`);
     if(e.note)lines.push(e.note);
     lines.push('');
-  });return lines.join('\n');
+  });
+  const drafts=Object.entries(data.drafts||{});
+  if(drafts.length){lines.push('BOZZE NON ANCORA CONFERMATE','');for(const [kind,e] of drafts){lines.push(`${e.minute||'-'}' (${periods[e.period]||'-'}) - Bozza ${kind}`);if(e.team)lines.push(`Squadra: ${m[e.team]||e.team}`);if(kind==='disciplina')lines.push(`${e.sanction||''} - n° ${e.player||'-'}`);if(kind==='sostituzione')lines.push(`Esce n° ${e.out||'-'} / Entra n° ${e.in||'-'}`);lines.push(e.note||'', '')}}
+  return lines.join('\n');
 }
 // Self-contained PDF: fixed-width text, automatic wrapping and A4 pagination.
 function reportPDF(text){
