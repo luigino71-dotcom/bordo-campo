@@ -38,7 +38,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 window.addEventListener('pagehide',save);
 render();renderDrafts();if(loadWarning)$('#saved').textContent='⚠ '+loadWarning;
 setInterval(tick,1000);
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=5',{updateViaCache:'none'}).then(async()=>{await navigator.serviceWorker.ready;$('#offlineStatus').textContent='● Pronta anche senza connessione'}).catch(()=>{$('#offlineStatus').textContent='⚠ Offline non pronto: apri la pagina con connessione'})}else $('#offlineStatus').textContent='Offline non supportato in questo browser';
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=6',{updateViaCache:'none'}).then(async()=>{await navigator.serviceWorker.ready;$('#offlineStatus').textContent='● Pronta anche senza connessione'}).catch(()=>{$('#offlineStatus').textContent='⚠ Offline non pronto: apri la pagina con connessione'})}else $('#offlineStatus').textContent='Offline non supportato in questo browser';
 window.addEventListener('offline',()=>{$('#offlineStatus').textContent='● Senza rete: continua ad annotare'});
 
 

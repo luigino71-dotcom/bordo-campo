@@ -1,5 +1,5 @@
-const CACHE='bordo-campo-offline-v5';
-const ASSETS=['./','./index.html','./style.css?v=5','./app.js?v=5','./report.js?v=5','./manifest.webmanifest'];
+const CACHE='bordo-campo-offline-v6';
+const ASSETS=['./','./index.html','./style.css?v=6','./app.js?v=6','./report.js?v=6','./voice.js?v=6','./manifest.webmanifest'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(async cache=>{await cache.addAll(ASSETS);await self.skipWaiting()}))});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const name of await caches.keys())if(name.startsWith('bordo-campo-offline-')&&name!==CACHE)await caches.delete(name);await self.clients.claim()})())});
 self.addEventListener('fetch',event=>{
